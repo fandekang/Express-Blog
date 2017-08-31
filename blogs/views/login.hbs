@@ -1,0 +1,81 @@
+
+	<div class="formArea">
+		<div class="fa-tit">用户 登录/注册</div>
+		<div class="fa-con">
+		    <div class="inp-group">
+			    <label for="">账号：</label>
+			    <div class="inp">
+			    	<input type="text" placeholder="请输入您的账号" class="uName">
+			    </div>
+			</div>
+			
+		    <div class="inp-group">
+			    <label for="">密码：</label>
+			    <div class="inp">
+			    	<input type="password" placeholder="请输入您的密码" class="uPwd">
+			    </div>
+			</div>	
+			<div class="inp-group bts">
+				 <button class="btn_register">注册</button>
+			    <button class="btn_login">登陆</button>
+			</div>		
+		</div>
+	</div>
+<script src='js/jquery-1.9.1.min.js'></script>
+<script>
+$(function(){
+	$("header").hide();	
+	$("footer").hide();	
+	
+	$(".btn_login").click(function(){
+		var logindata = {
+			fun:'find',
+			'uName': $(".uName").val(),
+			'uPwd': $(".uPwd").val()
+        }
+		
+        $.post('/login', logindata, function(data){
+          
+           if(data == 'ok'){
+               alert('登陆成功');
+               window.location.href = '/';
+           } else if(data=='err'){
+               alert('您的账号不存在！');
+           }
+        });
+	})
+
+
+	$(".btn_register").click(function(){
+		var data = {
+			fun:'insert',
+			'uName': $(".uName").val(),
+			'uPwd': $(".uPwd").val()
+        }
+		
+        $.post('/login', data, function(data){
+          console.log(data);
+           if(data == 'ok'){
+               alert('注册成功');
+               
+           } else {
+               alert('注册失败');
+           }
+        });
+	})
+
+	
+})	
+
+</script>
+<script>
+function el(name){
+	return document.querySelector(name);
+}	
+var fa = el('.formArea');
+	
+fa.style.marginTop = - fa.clientHeight/2 + "px";	
+window.onresize = function(){
+	fa.style.marginTop = - fa.clientHeight/2 + "px";	
+}	
+</script>
