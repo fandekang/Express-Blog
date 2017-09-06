@@ -15,7 +15,7 @@ $(function(){
 			// (new Date())
 			'artPic': 'images/upload/default.png',
 			'artDes': $(".artDes").val(),
-			'artCon': $(".artCon").val(),
+			'artCon': $('#editor  p').html(),
 			'artTags': [],
 			'artCount': 0
 		};

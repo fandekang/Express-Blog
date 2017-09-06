@@ -24,9 +24,9 @@ $(function(){
 			window.location.href = '/?page=' + (pageNum + 1);
 		}
 	})
-	$(".loginNow").click(function(){
-		window.location.href = '/write';
-	})
+	// $(".loginNow").click(function(){
+	// 	window.location.href = '/write';
+	// })
 	
 
 	$(".loadPage").click(function(){
