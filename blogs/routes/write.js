@@ -12,11 +12,12 @@ var deal = {
 		name: 'insert',
 		query: {}
 	},
-	colName: 'article',	
+	colName: 'news',	
 }
 
 router.post('/', function(req, res){
-	deal.query = req.body;
+	deal.funs.query= req.body;
+	console.log(req.body);
 	conn(deal, function(data){
 		if(data){
 			res.send('OK');

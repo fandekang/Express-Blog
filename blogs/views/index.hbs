@@ -17,7 +17,7 @@
 		    <ul class="artList">
 		        {{#each list}}
 				<li>
-					<a class="img" href="/list/?search={{artTit}}">
+					<a class="img" href="/article/?title={{artTit}}">
 						<img src="images/upload/default.png" alt="{{artTit}}">
 					</a>	
 					<div class="artDetail">
@@ -25,7 +25,10 @@
 							{{artTit}}
 						</h4>
 						<span class="des">
-							{{artDes}}...&nbsp;&nbsp;<a class="mores" href="/list/?search={{artTit}}">[查看全文]</a>
+							{{artDes}}...&nbsp;&nbsp;
+							
+							<a class="mores" href="/article/?title={{artTit}}">[查看全文]</a>
+							
 						</span>
 						<div class="aboutArt">
 							<span>作者：{{artAuthor}}</span>&nbsp;&nbsp;

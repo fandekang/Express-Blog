@@ -24,8 +24,11 @@ $(function(){
 			window.location.href = '/?page=' + (pageNum + 1);
 		}
 	})
+	$(".loginNow").click(function(){
+		window.location.href = '/write';
+	})
 	
-	
+
 	$(".loadPage").click(function(){
 		var number=$(".number").val();
 		console.log(number);

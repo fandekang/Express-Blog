@@ -38,7 +38,6 @@ app.use('/', index);
 app.use('/list', list);
 app.use('/article', article);
 app.use('/login', login);
-
 app.use('/conf', conf);
 app.use('/write', write);
 app.use('/upload', upload);

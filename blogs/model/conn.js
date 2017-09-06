@@ -32,6 +32,7 @@ function conn(deal, fun){
 						var allFuns = deal.funs.length;
 						var dealLen = {};
 						var count = 0;
+						//预加载
 						for(let i = 0; i < allFuns; i++){
 							switchFun(col, deal.funs[i], function(data){
 						
