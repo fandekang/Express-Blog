@@ -10,11 +10,10 @@ var index = require('./routes/index');
 var list = require('./routes/list');
 var article = require('./routes/article');
 var login = require('./routes/login');
-
 var conf = require('./routes/conf');
 var write = require('./routes/write');
 var upload = require('./routes/upload');
-
+var reg = require('./routes/reg');
 
 var app = express();
 
@@ -41,7 +40,7 @@ app.use('/login', login);
 app.use('/conf', conf);
 app.use('/write', write);
 app.use('/upload', upload);
-
+app.use('/reg', reg)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

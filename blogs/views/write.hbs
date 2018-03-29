@@ -2,13 +2,9 @@
 	    <aside>
 	    	<h3>归档</h3>
 	    	<ul>
-	    		<li><a href="">2012年02月</a></li>
-	    		<li><a href="">2012年02月</a></li>
-	    		<li><a href="">2012年02月</a></li>
-	    		<li><a href="">2012年02月</a></li>
-				<li><a href="">2012年02月</a></li>
-				<li><a href="">2012年02月</a></li>
-    	        <li><a href="">2012年02月</a></li>
+	    		<li><a href="/list/?time=2017-7">2017年7月</a></li>
+	    		<li><a href="/list/?time=2017-8">2017年8月</a></li>
+	    		<li><a href="/list/?time=2017-11">2017年11月</a></li>
 	    	</ul>
 	    	<div class="loginNow">
 	    		立即登出
@@ -63,9 +59,7 @@
 
 						<!-- Create the editor container -->
 						<div id="editor" class="artCon">
-						  {{!-- <p>Hello World!</p>
-						  <p>Some initial <strong>bold</strong> text</p> --}}
-						  <p><br></p>
+						  
 						</div>
 
 						<!-- Include the Quill library -->
@@ -83,5 +77,40 @@
 			</article>				    				
 		</div>	
 		<script src="js/jquery-1.9.1.min.js"></script>
-	    <script src="js/write.js"></script>
-																		
+		<script>
+			$(function(){
+				
+				$('.subArt').click(function(){
+					var date = new Date();
+					var y = date.getFullYear();
+					var m = date.getMonth()+1;
+					var d = date.getDate();
+					var artdata = {
+						artTit:$('.artTit').val(),
+						artAuthor:$('.artAuthor').val(),
+						artYearM: y+'-'+m,
+						artDay:d,
+						artCount:'200',
+						artDes:$('.artDes').val(),
+						artCon:$('#editor .ql-editor').html(),
+					}
+					console.log(artdata)
+					if(artdata.artTit==''||artdata.artAuthor==''||artdata.artDes==''||artdata.artCon==''){
+						alert('请输入文章信息')
+					}
+					else{
+						$.post('/write', artdata, function(data){
+						
+						if(data == 'ok'){
+							alert('发表成功！');
+							window.location.href = '/'
+						} else if(data == 'err') {
+							alert('发表失败！');
+						}
+					})
+								
+				}
+				
+			})
+			})	
+		</script>																

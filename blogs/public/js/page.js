@@ -20,20 +20,8 @@ $(function(){
 	
 	$(".next").click(function(){
 		if(pageNum < lastNum){
-			console.log(lastNum + 1)
+			
 			window.location.href = '/?page=' + (pageNum + 1);
 		}
-	})
-	// $(".loginNow").click(function(){
-	// 	window.location.href = '/write';
-	// })
-	
-
-	$(".loadPage").click(function(){
-		var number=$(".number").val();
-		console.log(number);
-		pageNum=number;
-		window.location.href = '/?page=' + (pageNum);
-	})
-	
+	})	
 })

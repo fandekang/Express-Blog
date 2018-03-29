@@ -1,39 +1,42 @@
+		<style>
+			.txt{
+				border: 1px solid #eaeaea;
+				margin-top: 20px;
+				margin-left: 20px;
+			}
+		</style>
+
 	    <aside>
 	    	<h3>归档</h3>
 	    	<ul>
-	    		<li><a href="">2012年02月</a></li>
-	    		<li><a href="">2012年02月</a></li>
-	    		<li><a href="">2012年02月</a></li>
-	    		<li><a href="">2012年02月</a></li>
-				<li><a href="">2012年02月</a></li>
-				<li><a href="">2012年02月</a></li>
-    	        <li><a href="">2012年02月</a></li>
+	    		<li><a href="/list/?time=2017-7">2017年7月</a></li>
+	    		<li><a href="/list/?time=2017-8">2017年8月</a></li>
+	    		<li><a href="/list/?time=2017-11">2017年11月</a></li>
 	    	</ul>
 	    	<div class="loginNow">
-	    		立即登录
+				<a href="/reg">注册</a>
+	    		<a href='/login'> 登录</a>
+				<a href='/write'>写博客</a>
 	    	</div>
 	    </aside>
 		<div class="content">
+			<input type="text" class="txt">
 		    <ul class="artList">
 		        {{#each list}}
 				<li>
-					<a class="img" href="/article/?title={{artTit}}">
-						<img src="images/upload/default.png" alt="{{artTit}}">
+					<a class="img" href="/article/?title={{this.artTit}}">
+						<img src="images/upload/default.png" alt="{{this.artTit}}">
 					</a>	
 					<div class="artDetail">
-						<h4 class="artTit">
-							{{artTit}}
-						</h4>
+						<h4 class="artTit">{{this.artTit}}</h4>
 						<span class="des">
-							{{artDes}}...&nbsp;&nbsp;
-							
-							<a class="mores" href="/article/?title={{artTit}}">[查看全文]</a>
-							
+							{{this.artDes}}...&nbsp;&nbsp;<a class="mores" href="/article/?title={{this.artTit}}">[查看全文]</a>
+							<input type="button" class="del" value="删除本文">
 						</span>
 						<div class="aboutArt">
-							<span>作者：{{artAuthor}}</span>&nbsp;&nbsp;
-							<span>发表时间：{{artDate}}</span>&nbsp;&nbsp;
-							<span>阅读量：{{artCount}}</span>
+							<span>作者：{{this.artAuthor}}</span>&nbsp;&nbsp;
+							<span>发表时间：{{this.artYearM}}-{{this.artDay}}</span>&nbsp;&nbsp;
+							<span>阅读量：{{this.artCount}}</span>
 						</div>
 					</div>																	
 				</li>
@@ -42,7 +45,7 @@
 			</ul>	
 			
 			<div class="page">
-				<button class="prev">上一页</button>
+				<button class="prev" >上一页</button>
 				<ul>
 				    
 				    {{#each pages}}
@@ -53,11 +56,30 @@
 				<button class="next">下一页</button>
 				<span>跳转到第</span>
 				<div class="inp">
-					<input type="text" placeholder="1" class="number">
+					<input type="text" class="pagenum" value='1'>
 				</div>
 				<span>页</span>
 				<button class="loadPage">确定</button>
 			</div>										
 		</div>	
 		<script src="js/page.js"></script>
-		
+		<script src='js/jquery-1.9.1.min.js'></script>
+		<script>
+			$(function(){
+				
+				$('.loadPage').click(function(){
+					var val =$('.pagenum').val()
+					window.location.href = '/?page='+val;
+				})
+				$('.del').click(function(){
+					 $(this).parent().parent().parent().remove();
+           			 var  deldata = {'artTit':$(this).parent().parent().children(0).html();
+						console.log(deldata);
+           			 $.post('/', deldata, function(data){
+               			 if(data == 'ok'){
+               			alert('删除成功！');
+           			}
+       			 })
+				})
+			})
+		</script>

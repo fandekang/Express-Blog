@@ -1,21 +1,13 @@
 $(function(){
-	function showDate(){
-		//显示日期
-		var date=new Date();
-		var str=""+date.getFullYear()+"/"+(date.getMonth()+1)+"/"+date.getDate();	
-		$(".artDate").val(str);
+	$(".subArt").click(function(){
 		
-	}
-	showDate();
-	$(".subArt").click(function(){		
 		var vals = {
 			'artTit': $(".artTit").val(),
 			'artAuthor': $(".artAuthor").val(), 
-			'artDate': $(".artDate").val(),
-			// (new Date())
-			'artPic': 'images/upload/default.png',
-			'artDes': $(".artDes").val(),
-			'artCon': $('#editor  p').html(),
+			'artDate': (new Date()),
+			'artPic': 'images/upload/test.png',
+			'artDes': $(".artAuthor").html(),
+			'artCon': $(".artAuthor").html(),
 			'artTags': [],
 			'artCount': 0
 		};
@@ -27,4 +19,3 @@ $(function(){
 		})
 	})
 })
-

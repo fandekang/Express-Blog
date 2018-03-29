@@ -1,5 +1,4 @@
-
-	<div class="formArea">
+<div class="formArea">
 		<div class="fa-tit">用户登录</div>
 		<div class="fa-con">
 		    <div class="inp-group">
@@ -16,12 +15,13 @@
 			    </div>
 			</div>	
 			<div class="inp-group bts">
-			    <button class="btn green fr login">立即登陆</button>
+			    <button class="btn green fr reg">立即注册</button>
 			</div>		
 		</div>
 	</div>
 <script>
 $(function(){
+
 $("footer").hide();		
 })	
 
@@ -39,27 +39,27 @@ window.onresize = function(){
 </script>
 <script src='./js/jquery-1.9.1.min.js'></script>
 <script>
-	$(function(){
-    $(".login").click(function(){
-        var logindata = {
+    $('.reg').click(function(){
+		var v =/^[A-Za-z0-9]{4,16}$/;
+       var regdata = {
             'uName': $(".uName").val(),
             'uPwd': $('.uPwd').val()
         }
-		if(logindata.uName ==''||logindata.uPwd==''){
-			alert('请输入账号密码');
-			return;
-		}else{
-			$.post('/login', logindata, function(data){
+		if(v.test(regdata.uName)){
+			$.post('/reg', regdata, function(data){
            console.log(data); // 没有任何数据传递
            if(data == 'ok'){
-               alert('登陆成功');
-               window.location.href = '/'
+               alert('注册成功！');
+               window.location.href = '/login'
            } else if(data == 'err') {
-               alert('账号或密码错误！');
+               alert('注册失败！');
+           }else{
+               alert('请输入账号或密码！')
            }
-        });
+        })
+		}else{
+			alert('请输入4-16位的账号！')
 		}
-      
+       
     })
-})    
 </script>
